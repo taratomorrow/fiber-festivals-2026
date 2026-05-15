@@ -1,827 +1,418 @@
-<!DOCTYPE html>
 
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 Fiber Festivals — Northeast &amp; Mid-Atlantic</title>
-<meta name="description" content="A curated guide to 25 fiber festivals across the Northeast and Mid-Atlantic in 2026 — from Maryland Sheep &amp; Wool to Rhinebeck, with details on fibers, vendors, admission, and more.">
-<meta property="og:title" content="2026 Fiber Festivals — Northeast &amp; Mid-Atlantic">
-<meta property="og:description" content="A curated guide to 25 fiber festivals across the Northeast and Mid-Atlantic in 2026 — from Maryland Sheep &amp; Wool to Rhinebeck, with details on fibers, vendors, admission, and more.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#FCD9BE">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-<style>
-:root {
-  --apricot: #FCD9BE;
-  --apricot-deep: #F5C49E;
-  --apricot-line: #E8B98F;
-  --cream: #FFF7EE;
-  --ink: #2A1A0E;
-  --ink-soft: #6E5847;
-  --ink-faint: #A0907F;
-  --vista: #8C9EFF;
-  --chartreuse: #D6F74C;
-  --tomato: #F06038;
-  --shadow: rgba(42, 26, 14, 0.10);
-  --shadow-deep: rgba(42, 26, 14, 0.18);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-html, body { background: var(--apricot); color: var(--ink); font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body { padding: 22px 18px 80px; max-width: 1080px; margin: 0 auto; position: relative; overflow-x: hidden; min-height: 100vh; }
 
-/* Decorative blobs */
-.blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(40px); opacity: 0.45; }
-.blob.b1 { top: 80px; right: -60px; width: 220px; height: 220px; background: var(--vista); }
-.blob.b2 { top: 380px; left: -80px; width: 180px; height: 180px; background: var(--chartreuse); }
-.blob.b3 { top: 1400px; right: -40px; width: 200px; height: 200px; background: var(--tomato); opacity: 0.28; }
 
-main, header, .topbar, footer, .filter-card, .legend, .empty { position: relative; z-index: 1; }
 
-/* Top bar */
-.topbar { display: flex; justify-content: space-between; align-items: center; padding: 0 4px 24px; gap: 16px; }
-.topbar .brand { font-family: ‘Funnel Display’, sans-serif; font-size: 17px; font-weight: 700; color: var(–ink); display: flex; align-items: center; gap: 10px; letter-spacing: -0.01em; }
-.topbar .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(–tomato); flex-shrink: 0; }
-.topbar .nav { font-size: 13px; color: var(–ink-soft); font-weight: 500; text-align: right; }
-
-/* Hero */
-.hero { padding: 16px 0 28px; }
-.hero .eyebrow { font-size: 12px; font-weight: 700; color: var(–ink); margin-bottom: 22px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(–cream); border-radius: 100px; box-shadow: 0 2px 0 var(–shadow); letter-spacing: 0.03em; }
-.hero .eyebrow .star { color: var(–tomato); }
-.hero h1 { font-family: ‘Funnel Display’, sans-serif; font-weight: 700; font-size: clamp(52px, 12vw, 116px); line-height: 0.92; letter-spacing: -0.035em; }
-.hero h1 .blue { color: var(–vista); font-weight: 600; }
-.hero h1 .red { color: var(–tomato); font-style: italic; font-weight: 600; }
-.hero .sub { font-size: 17px; line-height: 1.55; color: var(–ink); max-width: 520px; margin-top: 22px; font-weight: 400; }
-
-/* Filter card */
-.filter-card { background: var(–cream); border-radius: 28px; padding: 22px 22px 18px; margin-top: 28px; box-shadow: 0 3px 0 var(–shadow); }
-.filter-card .label { font-family: ‘Funnel Display’, sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(–ink-soft); font-weight: 700; margin-bottom: 14px; }
-.states { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-.state { font-family: ‘Funnel Display’, sans-serif; font-weight: 600; font-size: 14px; padding: 8px 16px; border-radius: 100px; border: 2px solid var(–apricot-line); background: transparent; color: var(–ink); cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
-.state:hover:not(.active) { background: var(–apricot); }
-.state:focus-visible { outline: 2px solid var(–vista); outline-offset: 2px; }
-.state.active { background: var(–vista); color: var(–cream); border-color: var(–vista); }
-
-.row { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px dashed var(–apricot-line); flex-wrap: wrap; gap: 12px; }
-.toggle { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(–ink); cursor: pointer; font-weight: 500; background: none; border: none; padding: 0; font-family: inherit; }
-.toggle:focus-visible { outline: 2px solid var(–vista); outline-offset: 4px; border-radius: 4px; }
-.toggle .sw { width: 38px; height: 22px; background: var(–apricot); border-radius: 100px; position: relative; border: 2px solid var(–apricot-line); transition: background 0.2s, border-color 0.2s; flex-shrink: 0; }
-.toggle .sw::after { content: ‘’; width: 14px; height: 14px; background: var(–ink); border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: left 0.2s, background 0.2s; }
-.toggle[aria-pressed=“true”] .sw { background: var(–vista); border-color: var(–vista); }
-.toggle[aria-pressed=“true”] .sw::after { left: 18px; background: var(–cream); }
-.count { font-size: 14px; font-weight: 600; color: var(–ink); display: inline-flex; align-items: center; gap: 4px; }
-.count .num { background: var(–chartreuse); padding: 3px 12px; border-radius: 100px; font-family: ‘Funnel Display’, sans-serif; font-weight: 700; }
-
-/* Legend */
-.legend { background: var(–cream); border-radius: 20px; padding: 14px 18px; margin-top: 14px; display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; box-shadow: 0 2px 0 var(–shadow); }
-.legend .legend-label { font-family: ‘Funnel Display’, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(–ink-soft); font-weight: 700; }
-.legend .swatch { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(–ink); font-weight: 500; }
-.legend .dot-sw { width: 14px; height: 14px; border-radius: 5px; flex-shrink: 0; }
-.legend .dot-sw.spring { background: var(–chartreuse); }
-.legend .dot-sw.summer { background: var(–vista); }
-.legend .dot-sw.fall { background: var(–tomato); }
-.legend .dot-sw.winter { background: var(–ink); }
-
-/* Cards grid */
-.cards { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 22px; align-items: start; }
-@media (min-width: 720px) { .cards { grid-template-columns: 1fr 1fr; } }
-
-.card { background: var(–cream); border-radius: 28px; padding: 24px; box-shadow: 0 3px 0 var(–shadow); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s; position: relative; border: none; text-align: left; font-family: inherit; color: inherit; width: 100%; }
-.card:hover { transform: translateY(-2px); box-shadow: 0 5px 0 var(–shadow-deep); }
-.card:focus-visible { outline: 2px solid var(–vista); outline-offset: 3px; }
-
-/* Past state — just dim, plus inline “Past · “ marker */
-.card.past { opacity: 0.62; }
-.card.past:hover { opacity: 0.82; }
-.past-marker { display: none; color: var(–ink-soft); font-weight: 700; }
-.card.past .past-marker { display: inline; }
-
-/* Card top row: ticket + visit button */
-.card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
-
-/* Ticket: color = season */
-.ticket { padding: 12px 18px; border-radius: 18px; min-width: 96px; text-align: center; flex-shrink: 0; }
-.ticket .month { font-family: ‘Funnel Display’, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.92; }
-.ticket .day { font-family: ‘Funnel Display’, sans-serif; font-size: 26px; font-weight: 700; line-height: 1; margin-top: 4px; letter-spacing: -0.02em; white-space: nowrap; }
-.ticket.wide .day { font-size: 16px; line-height: 1.15; }
-.ticket.spring { background: var(–chartreuse); color: var(–ink); }
-.ticket.summer { background: var(–vista); color: var(–cream); }
-.ticket.fall { background: var(–tomato); color: var(–cream); }
-.ticket.winter { background: var(–ink); color: var(–cream); }
-
-/* Visit button (top-right of card, always visible) */
-.visit-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: var(–ink); color: var(–cream); border-radius: 100px; font-family: ‘Funnel Display’, sans-serif; font-weight: 600; font-size: 13px; text-decoration: none; white-space: nowrap; transition: background 0.18s, transform 0.18s; align-self: center; }
-.visit-btn:hover { background: var(–tomato); transform: translateY(-1px); }
-.visit-btn:focus-visible { outline: 2px solid var(–vista); outline-offset: 3px; }
-
-/* Title + location + summary */
-.card h3 { font-family: ‘Funnel Display’, sans-serif; font-weight: 700; font-size: 26px; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 6px; }
-.card .loc { font-size: 14px; color: var(–ink-soft); font-weight: 500; margin-bottom: 14px; }
-.card .summary { font-size: 15px; line-height: 1.55; color: var(–ink-soft); margin-bottom: 6px; font-style: italic; }
-
-/* Smooth expand */
-.expand-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.36s cubic-bezier(0.4, 0, 0.2, 1); }
-.expand-inner { overflow: hidden; opacity: 0; transition: opacity 0.22s ease-out; }
-.card.expanded .expand-wrap { grid-template-rows: 1fr; }
-.card.expanded .expand-inner { opacity: 1; transition: opacity 0.3s ease-in 0.12s; }
-.expand-pad { padding-top: 18px; }
-
-/* Details list — unified prose rows */
-.details { display: grid; grid-template-columns: 100px 1fr; gap: 14px 18px; }
-.details dt { font-family: ‘Funnel Display’, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(–ink-soft); padding-top: 3px; }
-.details dd { font-size: 14.5px; line-height: 1.5; color: var(–ink); }
-
-/* Card footer — just the expand control */
-.card-foot { display: flex; justify-content: flex-end; align-items: center; margin-top: 18px; }
-.card-foot .more { width: 34px; height: 34px; border-radius: 50%; background: var(–ink); color: var(–cream); display: grid; place-items: center; font-size: 20px; font-weight: 400; line-height: 1; transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s; flex-shrink: 0; }
-.card.expanded .card-foot .more { background: var(–tomato); transform: rotate(45deg); }
-
-/* Empty state */
-.empty { background: var(–cream); border-radius: 28px; padding: 36px 24px; margin-top: 22px; text-align: center; box-shadow: 0 3px 0 var(–shadow); }
-.empty h4 { font-family: ‘Funnel Display’, sans-serif; font-weight: 700; font-size: 22px; margin-bottom: 8px; }
-.empty p { font-size: 14.5px; color: var(–ink-soft); line-height: 1.5; }
-
-/* Footer */
-footer { margin-top: 56px; padding: 32px 0 0; text-align: center; }
-footer .sig { font-family: ‘Funnel Display’, sans-serif; font-weight: 700; font-size: 20px; color: var(–ink); margin-bottom: 12px; display: block; letter-spacing: -0.01em; }
-footer .sig .red { color: var(–tomato); }
-footer p { font-size: 13px; color: var(–ink-soft); line-height: 1.55; max-width: 520px; margin: 0 auto; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-*, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
-html { scroll-behavior: auto; }
-}
-
-/* Narrow phones: stack the ticket and visit button */
-@media (max-width: 380px) {
-.card-top { flex-direction: column; align-items: flex-start; }
-.visit-btn { align-self: flex-start; }
-}
-</style>
-
-</head>
-<body>
-  <span class="blob b1" aria-hidden="true"></span>
-  <span class="blob b2" aria-hidden="true"></span>
-  <span class="blob b3" aria-hidden="true"></span>
-
-  <div class="topbar">
-    <span class="brand"><span class="dot" aria-hidden="true"></span>Skein '26</span>
-    <span class="nav">25 festivals · NE + Mid-Atlantic</span>
-  </div>
-
-  <header class="hero">
-    <span class="eyebrow"><span class="star">✿</span> A field guide to your fiber year</span>
-    <h1>Plan your <span class="blue">yarn</span><br>year, <span class="red">2026</span>.</h1>
-    <p class="sub">Twenty-five fiber festivals across the Northeast and Mid-Atlantic. From Vogue Knitting Live in January through the pre-winter stash run in November. Filter by state, tap any card to expand.</p>
-  </header>
-
-  <section class="filter-card" aria-label="Filter festivals">
-    <div class="label">Filter by state</div>
-    <div class="states" role="group" aria-label="State filter">
-      <button class="state active" data-state="all" aria-pressed="true">All</button>
-      <button class="state" data-state="CT" aria-pressed="false">CT</button>
-      <button class="state" data-state="MA" aria-pressed="false">MA</button>
-      <button class="state" data-state="MD" aria-pressed="false">MD</button>
-      <button class="state" data-state="ME" aria-pressed="false">ME</button>
-      <button class="state" data-state="NH" aria-pressed="false">NH</button>
-      <button class="state" data-state="NJ" aria-pressed="false">NJ</button>
-      <button class="state" data-state="NY" aria-pressed="false">NY</button>
-      <button class="state" data-state="PA" aria-pressed="false">PA</button>
-      <button class="state" data-state="VA" aria-pressed="false">VA</button>
-      <button class="state" data-state="VT" aria-pressed="false">VT</button>
-    </div>
-    <div class="row">
-      <button class="toggle" id="past-toggle" type="button" aria-pressed="false"><span class="sw" aria-hidden="true"></span> Show past events</button>
-      <span class="count">Showing<span class="num" id="count">25</span>events</span>
-    </div>
-  </section>
-
-  <section class="legend" aria-label="Color key">
-    <span class="legend-label">Date color · season</span>
-    <span class="swatch"><span class="dot-sw winter" aria-hidden="true"></span>Winter</span>
-    <span class="swatch"><span class="dot-sw spring" aria-hidden="true"></span>Spring</span>
-    <span class="swatch"><span class="dot-sw summer" aria-hidden="true"></span>Summer</span>
-    <span class="swatch"><span class="dot-sw fall" aria-hidden="true"></span>Fall</span>
-  </section>
-
-  <main class="cards" id="cards">
-
-```
-<!-- 1. Vogue Knitting Live NY -->
-<article class="card" data-states="NY" data-end-date="2026-02-01" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket winter wide"><div class="month">Jan–Feb</div><div class="day">Jan 29 – Feb 1</div></div>
-    <a href="https://vogueknitting.com/live" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Vogue Knitting Live NY</h3>
-  <p class="loc"><span class="past-marker">Past · </span>New York, NY</p>
-  <p class="summary">"Conference + marketplace; classes are the main event."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Broad — yarn and fiber from major brands and indie dyers.</dd>
-      <dt>Audience</dt><dd>Knitters.</dd>
-      <dt>Setting</dt><dd>Indoor.</dd>
-      <dt>Admission</dt><dd>Free to marketplace; workshops priced separately.</dd>
-      <dt>Workshops</dt><dd>Yes — the main draw; hundreds of classes across all skill levels.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 2. Wool & Fiber Expo -->
-<article class="card" data-states="MD" data-end-date="2026-02-08" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket winter"><div class="month">Feb</div><div class="day">6–8</div></div>
-    <a href="https://www.woolandfiberexpo.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Wool &amp; Fiber Expo</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Ocean City, MD</p>
-  <p class="summary">"Farm-direct; fleece competition; Delmarva region."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Farm fleece and raw fiber focus; wool and camelids.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Indoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 3. NETA Knit & Spin Spa -->
-<article class="card" data-states="ME" data-end-date="2026-03-01" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket winter wide"><div class="month">Feb–Mar</div><div class="day">Feb 27 – Mar 1</div></div>
-    <a href="https://www.knitneta.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>NETA Knit &amp; Spin Spa</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Freeport, ME</p>
-  <p class="summary">"Retreat format; classes plus social knitting."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Audience</dt><dd>Knitters.</dd>
-      <dt>Setting</dt><dd>Indoor.</dd>
-      <dt>Workshops</dt><dd>Yes — retreat is class-forward.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 4. Boston Public Market FiberFest -->
-<article class="card" data-states="MA" data-end-date="2026-03-22" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket spring"><div class="month">Mar</div><div class="day">21–22</div></div>
-    <a href="https://bostonpublicmarket.org" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Boston Public Market FiberFest</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Boston, MA</p>
-  <p class="summary">"Free, urban; New England–made goods only; workshops + demos."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>New England–made only; yarn, fleece, handmade fiber goods.</dd>
-      <dt>Vendors</dt><dd>Local and regional New England makers exclusively.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Indoor.</dd>
-      <dt>Admission</dt><dd>Free.</dd>
-      <dt>Workshops</dt><dd>Yes — demos and workshops on-site.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 5. NJ Wool Walk -->
-<article class="card" data-states="NJ" data-end-date="2026-04-26" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket spring"><div class="month">Apr</div><div class="day">22–26</div></div>
-    <a href="https://www.njwoolwalk.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>NJ Wool Walk</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Statewide, NJ</p>
-  <p class="summary">"Multi-day shop crawl; 17 stores this year."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Audience</dt><dd>Knitters.</dd>
-      <dt>Setting</dt><dd>Varies by shop.</dd>
-      <dt>Admission</dt><dd>Free.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 6. Fiber Witch Festival -->
-<article class="card" data-states="MA" data-end-date="2026-04-26" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket spring"><div class="month">Apr</div><div class="day">24–26</div></div>
-    <a href="https://www.fiberwitchfestival.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Fiber Witch Festival</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Salem, MA</p>
-  <p class="summary">"Indie dyers + witchy goods; Old Town Hall market."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Indie-dyed yarn, specialty fiber, handmade goods.</dd>
-      <dt>Vendors</dt><dd>Indie dyers and makers; curated.</dd>
-      <dt>Audience</dt><dd>Knitters.</dd>
-      <dt>Setting</dt><dd>Indoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 7. CT Sheep, Wool & Fiber Festival -->
-<article class="card" data-states="CT" data-end-date="2026-04-25" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket spring"><div class="month">Apr</div><div class="day">25</div></div>
-    <a href="https://ctsheepandwool.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>CT Sheep, Wool &amp; Fiber Festival</h3>
-  <p class="loc"><span class="past-marker">Past · </span>North Haven, CT</p>
-  <p class="summary">"One-day regional fair; vendors plus demos; 100+ year history."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Wool-forward; local farm fiber and yarn.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-      <dt>Admission</dt><dd>Free.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 8. Fiber Flurry -->
-<article class="card" data-states="NY" data-end-date="2026-04-26" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket spring"><div class="month">Apr</div><div class="day">25–26</div></div>
-    <a href="https://www.fiberflurry.org" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Fiber Flurry</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Perry, NY</p>
-  <p class="summary">"Workshops, skein competition, fiber arts exhibition."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Audience</dt><dd>Knitters.</dd>
-      <dt>Setting</dt><dd>Indoor.</dd>
-      <dt>Workshops</dt><dd>Yes — workshops are central to the event.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 9. Maryland Sheep & Wool -->
-<article class="card" data-states="MD" data-end-date="2026-05-03" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket spring"><div class="month">May</div><div class="day">2–3</div></div>
-    <a href="https://sheepandwool.org" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Maryland Sheep &amp; Wool</h3>
-  <p class="loc"><span class="past-marker">Past · </span>West Friendship, MD</p>
-  <p class="summary">"One of the largest sheep-and-wool festivals in the country; 53rd year in 2026."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Broad — wool, alpaca, mohair, camelids, silk; farm fleece through indie-dyed yarn.</dd>
-      <dt>Vendors</dt><dd>300+ vendors; national reach.</dd>
-      <dt>Vibes</dt><dd>Lamb dishes, 600+ sheep, sheepdog demos, live music, fleece sale, breed parade, fashion show, equipment auction.</dd>
-      <dt>Audience</dt><dd>Mixed — strong knitter crowd alongside serious shepherds.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-      <dt>Admission</dt><dd>$12.50 online / free under 18.</dd>
-      <dt>Workshops</dt><dd>Yes — 40+ fiber arts seminars; spinning, knitting, weaving, dyeing, crochet.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 10. NH Sheep & Wool -->
-<article class="card" data-states="NH" data-end-date="2026-05-10" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket spring"><div class="month">May</div><div class="day">9–10</div></div>
-    <a href="https://nhswga.org" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>NH Sheep &amp; Wool</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Deerfield, NH</p>
-  <p class="summary">"Classic New England fair run by the NH Sheep &amp; Wool Growers Association."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Wool-forward; local and regional farm fiber.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 11. Sheep in the Shires Yarn Crawl -->
-<article class="card" data-states="VT,MA,NY" data-end-date="2026-05-11" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket spring"><div class="month">May</div><div class="day">10–11</div></div>
-    <a href="https://freiafibers.com/events-and-trunk-shows/" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Sheep in the Shires Yarn Crawl</h3>
-  <p class="loc"><span class="past-marker">Past · </span>S. VT · Berkshires, MA · Chatham, NY</p>
-  <p class="summary">"Mother's Day weekend shop crawl across 8 farms and yarn shops."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Indie-dyed yarn, farm yarn, breed-specific fiber.</dd>
-      <dt>Vendors</dt><dd>~8 regional farm and yarn shop stops.</dd>
-      <dt>Audience</dt><dd>Knitters.</dd>
-      <dt>Setting</dt><dd>Varies by stop.</dd>
-      <dt>Admission</dt><dd>Free.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 12. Massachusetts Sheep & Woolcraft Fair -->
-<article class="card" data-states="MA" data-end-date="2026-05-24" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket spring"><div class="month">May</div><div class="day">23–24</div></div>
-    <a href="https://masheepwool.org" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Massachusetts Sheep &amp; Woolcraft Fair</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Cummington, MA</p>
-  <p class="summary">"Beloved volunteer-run hill-town fair; running since 1974."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Wool-forward; local and regional farm fleece, roving, and yarn.</dd>
-      <dt>Vendors</dt><dd>~160 exhibitors; regional and local.</dd>
-      <dt>Vibes</dt><dd>Food (signature lamb bits), livestock, sheepdog demos, sheep show, fleece auction.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-      <dt>Admission</dt><dd>$10 parking / free under 12.</dd>
-      <dt>Workshops</dt><dd>Yes — fiber arts workshops on-site.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 13. Maine Fiber Frolic -->
-<article class="card" data-states="ME" data-end-date="2026-06-07" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket summer"><div class="month">Jun</div><div class="day">6–7</div></div>
-    <a href="https://fiberfrolic.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Maine Fiber Frolic</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Windsor, ME</p>
-  <p class="summary">"Volunteer-run, deeply beloved; relaxed fair pace with strong local character."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Broad NE fiber; wool, alpaca, and locally produced yarn.</dd>
-      <dt>Vendors</dt><dd>Local and regional.</dd>
-      <dt>Vibes</dt><dd>Livestock, sheepdog demos, puppet &amp; magic show, live music, used equipment sale, fleece sale.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-      <dt>Admission</dt><dd>$5 adults / $8 two-day pass / free under 12.</dd>
-      <dt>Workshops</dt><dd>Yes — educational demos throughout.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 14. CNY Fiber Arts Festival -->
-<article class="card" data-states="NY" data-end-date="2026-06-07" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket summer"><div class="month">Jun</div><div class="day">6–7</div></div>
-    <a href="https://cnyfiberarts.org" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>CNY Fiber Arts Festival</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Frankfort, NY</p>
-  <p class="summary">"15th year; regional makers at the Herkimer County Fairgrounds."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Broad fiber arts; yarn, fleece, handspun.</dd>
-      <dt>Vendors</dt><dd>Regional.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 15. Virginia Fiber Fest -->
-<article class="card" data-states="VA" data-end-date="2026-06-14" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket summer"><div class="month">Jun</div><div class="day">13–14</div></div>
-    <a href="https://www.frederickfiberfest.com/new-virginia-fiber-fest" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Virginia Fiber Fest</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Fishersville, VA</p>
-  <p class="summary">"Weekend marketplace run by the same team as Frederick Fiber Fest."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Vendors</dt><dd>Regional vendor focus.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 16. NJ Sheep & Fiber Festival -->
-<article class="card" data-states="NJ" data-end-date="2026-09-13" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Sep</div><div class="day">12–13</div></div>
-    <a href="https://www.njsheepandfiberfestival.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>NJ Sheep &amp; Fiber Festival</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Ringoes, NJ</p>
-  <p class="summary">"Second weekend of September at the Hunterdon County 4-H Fairgrounds."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Wool-forward; farm fiber and yarn.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 17. PA Endless Mountains Fiber Festival -->
-<article class="card" data-states="PA" data-end-date="2026-09-13" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Sep</div><div class="day">12–13</div></div>
-    <a href="https://www.endlessmountainsfiberfestival.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>PA Endless Mountains Fiber Festival</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Harford, PA</p>
-  <p class="summary">"Largest and longest-running fiber festival in PA; started 2003 with Penn State Extension."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Broad — wool, alpaca, and other natural fibers.</dd>
-      <dt>Vendors</dt><dd>Regional.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 18. Adirondack Wool & Arts Festival -->
-<article class="card" data-states="NY" data-end-date="2026-09-20" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Sep</div><div class="day">19–20</div></div>
-    <a href="https://www.adkwoolandarts.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Adirondack Wool &amp; Arts Festival</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Greenwich, NY</p>
-  <p class="summary">"Washington County Fairgrounds; ~3,000 visitors annually."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Wool and natural fiber focus.</dd>
-      <dt>Vendors</dt><dd>Regional.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 19. Shenandoah Valley Fiber Festival -->
-<article class="card" data-states="VA" data-end-date="2026-09-27" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Sep</div><div class="day">26–27</div></div>
-    <a href="https://www.shenandoahvalleyfiberfestival.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Shenandoah Valley Fiber Festival</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Berryville, VA</p>
-  <p class="summary">"Returning in 2026 after skipping 2025; Clarke County Ruritan Fairgrounds."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Wool and goat fiber; Pygora goat show featured.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 20. Vermont Sheep & Wool Festival -->
-<article class="card" data-states="VT" data-end-date="2026-10-04" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Oct</div><div class="day">3–4</div></div>
-    <a href="https://vtsheepandwoolfest.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Vermont Sheep &amp; Wool Festival</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Tunbridge, VT</p>
-  <p class="summary">"Annual showcase of natural fibers and fiber arts; Tunbridge Fairgrounds."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Natural fibers focus; wool, alpaca, and local farm fiber.</dd>
-      <dt>Vendors</dt><dd>Regional and local.</dd>
-      <dt>Audience</dt><dd>Mixed.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 21. A Woolen Affair -->
-<article class="card" data-states="NY" data-end-date="2026-10-31" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Oct</div><div class="day">TBD</div></div>
-    <a href="https://www.woolenaffair.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>A Woolen Affair</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Red Hook / Kingston, NY</p>
-  <p class="summary">"Boutique and curated; Hudson Valley arts district; tickets on sale May 1."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Audience</dt><dd>Knitters.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 22. Indie Untangled -->
-<article class="card" data-states="NY" data-end-date="2026-10-16" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Oct</div><div class="day">16</div></div>
-    <a href="https://indieuntangled.com/rhinebeck/" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Indie Untangled</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Saugerties, NY</p>
-  <p class="summary">"The Rhinebeck eve tradition; 13th annual in 2026 at HITS on the Hudson."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Indie-dyed yarn and handspun; the whole point is the indie dyer concentration.</dd>
-      <dt>Vendors</dt><dd>45+ vendors; juried, national indie dyers and makers.</dd>
-      <dt>Vibes</dt><dd>Food trucks, live music, tented lounge, on-site yarn destash with Yarn Saver.</dd>
-      <dt>Audience</dt><dd>Knitters.</dd>
-      <dt>Setting</dt><dd>Outdoor (covered pavilions).</dd>
-      <dt>Admission</dt><dd>$5–$35 tiered entry by time slot.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 23. NY State Sheep & Wool (Rhinebeck) -->
-<article class="card" data-states="NY" data-end-date="2026-10-18" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Oct</div><div class="day">17–18</div></div>
-    <a href="https://sheepandwool.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>NY State Sheep &amp; Wool (Rhinebeck)</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Rhinebeck, NY</p>
-  <p class="summary">"45 years in; 300+ vendors, 30,000+ attendees, and a pilgrimages-from-everywhere energy that no other fiber festival matches."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Broad — wool, alpaca, mohair, angora, llama, musk ox; indie-dyed yarn well represented.</dd>
-      <dt>Vendors</dt><dd>300+ vendors; national and international.</dd>
-      <dt>Vibes</dt><dd>Winery/distillery/specialty foods building, livestock, sheepdog + frisbee dog demos, fleece sale, breed and camelid barns, fashion show, equipment auction.</dd>
-      <dt>Audience</dt><dd>Knitters — but draws a genuinely wide crowd.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-      <dt>Admission</dt><dd>$12 online / $15 gate / free under 12.</dd>
-      <dt>Workshops</dt><dd>Yes — Thu/Fri pre-festival; sell out fast.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 24. Frederick Fiber Fest Fall -->
-<article class="card" data-states="MD" data-end-date="2026-10-24" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Oct</div><div class="day">24</div></div>
-    <a href="https://www.frederickfiberfest.com" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Frederick Fiber Fest Fall</h3>
-  <p class="loc"><span class="past-marker">Past · </span>Frederick, MD</p>
-  <p class="summary">"One-day fall edition; easy day trip from DC or Baltimore."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Vendors</dt><dd>Regional.</dd>
-      <dt>Setting</dt><dd>Outdoor.</dd>
-      <dt>Admission</dt><dd>Free.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-
-<!-- 25. Fiber Festival of New England -->
-<article class="card" data-states="MA" data-end-date="2026-11-08" role="button" tabindex="0" aria-expanded="false">
-  <div class="card-top">
-    <div class="ticket fall"><div class="month">Nov</div><div class="day">7–8</div></div>
-    <a href="https://www.easternstatesexposition.com/p/fiberfestival" target="_blank" rel="noopener noreferrer" class="visit-btn">Visit site →</a>
-  </div>
-  <h3>Fiber Festival of New England</h3>
-  <p class="loc"><span class="past-marker">Past · </span>West Springfield, MA</p>
-  <p class="summary">"Large indoor marketplace at the Eastern States Exposition; the pre-winter stash run."</p>
-  <div class="expand-wrap"><div class="expand-inner"><div class="expand-pad">
-    <dl class="details">
-      <dt>Fibers</dt><dd>Broad — yarn, fleece, fiber tools, finished goods.</dd>
-      <dt>Vendors</dt><dd>National and regional.</dd>
-      <dt>Audience</dt><dd>Knitters.</dd>
-      <dt>Setting</dt><dd>Indoor.</dd>
-    </dl>
-  </div></div></div>
-  <div class="card-foot"><span class="more" aria-hidden="true">+</span></div>
-</article>
-```
-
-  </main>
-
-  <div class="empty" id="empty" hidden>
-    <h4>No festivals match this filter.</h4>
-    <p>Try a different state, or toggle past events to see what you missed.</p>
-  </div>
-
-  <footer>
-    <span class="sig">Skein <span class="red">'26</span> ✿</span>
-    <p>Dates and details from festival websites and community calendars as of Apr 2026. Always confirm before booking travel.</p>
-  </footer>
-
-<script>
-(function() {
-  'use strict';
-
-  // Start-of-today in user's local time
-  const now = new Date();
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
-  const cards = Array.from(document.querySelectorAll('.card'));
-  const stateBtns = Array.from(document.querySelectorAll('.state'));
-  const pastToggle = document.getElementById('past-toggle');
-  const countEl = document.getElementById('count');
-  const emptyEl = document.getElementById('empty');
-  const cardsContainer = document.getElementById('cards');
-
-  let activeState = 'all';
-  let showPast = false;
-
-  // Pre-compute past flag for each card
-  cards.forEach(card => {
-    const [y, m, d] = card.dataset.endDate.split('-').map(Number);
-    const endDate = new Date(y, m - 1, d);
-    const isPast = endDate < today;
-    card.dataset.isPast = isPast ? '1' : '0';
-    if (isPast) card.classList.add('past');
-  });
-
-  function applyFilters() {
-    let visible = 0;
-    cards.forEach(card => {
-      const states = card.dataset.states.split(',');
-      const isPast = card.dataset.isPast === '1';
-      const stateMatch = activeState === 'all' || states.includes(activeState);
-      const pastMatch = showPast || !isPast;
-      const show = stateMatch && pastMatch;
-      card.hidden = !show;
-      if (show) visible++;
-    });
-    countEl.textContent = visible;
-    if (visible === 0) {
-      emptyEl.hidden = false;
-      cardsContainer.hidden = true;
-    } else {
-      emptyEl.hidden = true;
-      cardsContainer.hidden = false;
-    }
-  }
-
-  // State filter buttons
-  stateBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      stateBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      activeState = btn.dataset.state;
-      applyFilters();
-    });
-  });
-
-  // Past events toggle
-  pastToggle.addEventListener('click', () => {
-    showPast = !showPast;
-    pastToggle.setAttribute('aria-pressed', showPast ? 'true' : 'false');
-    pastToggle.lastChild.textContent = showPast ? ' Hide past events' : ' Show past events';
-    applyFilters();
-  });
-
-  // Expand/collapse — whole card is the affordance
-  function toggleCard(card) {
-    const expanded = card.classList.toggle('expanded');
-    card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-  }
-
-  cards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      // Don't toggle when clicking the visit-site link
-      if (e.target.closest('a')) return;
-      toggleCard(card);
-    });
-    card.addEventListener('keydown', (e) => {
-      if (e.target !== card) return;
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleCard(card);
-      }
-    });
-  });
-
-  applyFilters();
-})();
-</script>
-
-</body>
-</html>
+Skein '26
+25 festivals · NE + Mid-Atlantic
+✿
+A field guide to your fiber year
+Plan your yarn year, 2026.
+Twenty-five fiber festivals across the Northeast and Mid-Atlantic. From Vogue Knitting Live in January through the pre-winter stash run in November. Filter by state, tap any card to expand.
+FILTER BY STATE
+All
+CT
+MA
+MD
+ME
+NH
+NJ
+NY
+PA
+VA
+VT
+
+Show past events Showing
+25
+events
+DATE COLOR · SEASON
+
+Winter
+
+Spring
+
+Summer
+
+Fall
+JAN–FEB
+Jan 29 – Feb 1
+Visit site →
+Vogue Knitting Live NY
+New York, NY
+"Conference + marketplace; classes are the main event."
+FIBERS
+Broad — yarn and fiber from major brands and indie dyers.
+AUDIENCE
+Knitters.
+SETTING
+Indoor.
+ADMISSION
+Free to marketplace; workshops priced separately.
+WORKSHOPS
+Yes — the main draw; hundreds of classes across all skill levels.
++
+FEB
+6–8
+Visit site →
+Wool & Fiber Expo
+Ocean City, MD
+"Farm-direct; fleece competition; Delmarva region."
+FIBERS
+Farm fleece and raw fiber focus; wool and camelids.
+AUDIENCE
+Mixed.
+SETTING
+Indoor.
++
+FEB–MAR
+Feb 27 – Mar 1
+Visit site →
+NETA Knit & Spin Spa
+Freeport, ME
+"Retreat format; classes plus social knitting."
+AUDIENCE
+Knitters.
+SETTING
+Indoor.
+WORKSHOPS
+Yes — retreat is class-forward.
++
+MAR
+21–22
+Visit site →
+Boston Public Market FiberFest
+Boston, MA
+"Free, urban; New England–made goods only; workshops + demos."
+FIBERS
+New England–made only; yarn, fleece, handmade fiber goods.
+VENDORS
+Local and regional New England makers exclusively.
+AUDIENCE
+Mixed.
+SETTING
+Indoor.
+ADMISSION
+Free.
+WORKSHOPS
+Yes — demos and workshops on-site.
++
+APR
+22–26
+Visit site →
+NJ Wool Walk
+Statewide, NJ
+"Multi-day shop crawl; 17 stores this year."
+AUDIENCE
+Knitters.
+SETTING
+Varies by shop.
+ADMISSION
+Free.
++
+APR
+24–26
+Visit site →
+Fiber Witch Festival
+Salem, MA
+"Indie dyers + witchy goods; Old Town Hall market."
+FIBERS
+Indie-dyed yarn, specialty fiber, handmade goods.
+VENDORS
+Indie dyers and makers; curated.
+AUDIENCE
+Knitters.
+SETTING
+Indoor.
++
+APR
+25
+Visit site →
+CT Sheep, Wool & Fiber Festival
+North Haven, CT
+"One-day regional fair; vendors plus demos; 100+ year history."
+FIBERS
+Wool-forward; local farm fiber and yarn.
+AUDIENCE
+Mixed.
+SETTING
+Outdoor.
+ADMISSION
+Free.
++
+APR
+25–26
+Visit site →
+Fiber Flurry
+Perry, NY
+"Workshops, skein competition, fiber arts exhibition."
+AUDIENCE
+Knitters.
+SETTING
+Indoor.
+WORKSHOPS
+Yes — workshops are central to the event.
++
+MAY
+2–3
+Visit site →
+Maryland Sheep & Wool
+West Friendship, MD
+"One of the largest sheep-and-wool festivals in the country; 53rd year in 2026."
+FIBERS
+Broad — wool, alpaca, mohair, camelids, silk; farm fleece through indie-dyed yarn.
+VENDORS
+300+ vendors; national reach.
+VIBES
+Lamb dishes, 600+ sheep, sheepdog demos, live music, fleece sale, breed parade, fashion show, equipment auction.
+AUDIENCE
+Mixed — strong knitter crowd alongside serious shepherds.
+SETTING
+Outdoor.
+ADMISSION
+$12.50 online / free under 18.
+WORKSHOPS
+Yes — 40+ fiber arts seminars; spinning, knitting, weaving, dyeing, crochet.
++
+MAY
+9–10
+Visit site →
+NH Sheep & Wool
+Deerfield, NH
+"Classic New England fair run by the NH Sheep & Wool Growers Association."
+FIBERS
+Wool-forward; local and regional farm fiber.
+AUDIENCE
+Mixed.
+SETTING
+Outdoor.
++
+MAY
+10–11
+Visit site →
+Sheep in the Shires Yarn Crawl
+S. VT · Berkshires, MA · Chatham, NY
+"Mother's Day weekend shop crawl across 8 farms and yarn shops."
+FIBERS
+Indie-dyed yarn, farm yarn, breed-specific fiber.
+VENDORS
+~8 regional farm and yarn shop stops.
+AUDIENCE
+Knitters.
+SETTING
+Varies by stop.
+ADMISSION
+Free.
++
+MAY
+23–24
+Visit site →
+Massachusetts Sheep & Woolcraft Fair
+Cummington, MA
+"Beloved volunteer-run hill-town fair; running since 1974."
+FIBERS
+Wool-forward; local and regional farm fleece, roving, and yarn.
+VENDORS
+~160 exhibitors; regional and local.
+VIBES
+Food (signature lamb bits), livestock, sheepdog demos, sheep show, fleece auction.
+AUDIENCE
+Mixed.
+SETTING
+Outdoor.
+ADMISSION
+$10 parking / free under 12.
+WORKSHOPS
+Yes — fiber arts workshops on-site.
++
+JUN
+6–7
+Visit site →
+Maine Fiber Frolic
+Windsor, ME
+"Volunteer-run, deeply beloved; relaxed fair pace with strong local character."
+FIBERS
+Broad NE fiber; wool, alpaca, and locally produced yarn.
+VENDORS
+Local and regional.
+VIBES
+Livestock, sheepdog demos, puppet & magic show, live music, used equipment sale, fleece sale.
+AUDIENCE
+Mixed.
+SETTING
+Outdoor.
+ADMISSION
+$5 adults / $8 two-day pass / free under 12.
+WORKSHOPS
+Yes — educational demos throughout.
++
+JUN
+6–7
+Visit site →
+CNY Fiber Arts Festival
+Frankfort, NY
+"15th year; regional makers at the Herkimer County Fairgrounds."
+FIBERS
+Broad fiber arts; yarn, fleece, handspun.
+VENDORS
+Regional.
+SETTING
+Outdoor.
++
+JUN
+13–14
+Visit site →
+Virginia Fiber Fest
+Fishersville, VA
+"Weekend marketplace run by the same team as Frederick Fiber Fest."
+VENDORS
+Regional vendor focus.
+SETTING
+Outdoor.
++
+SEP
+12–13
+Visit site →
+NJ Sheep & Fiber Festival
+Ringoes, NJ
+"Second weekend of September at the Hunterdon County 4-H Fairgrounds."
+FIBERS
+Wool-forward; farm fiber and yarn.
+AUDIENCE
+Mixed.
+SETTING
+Outdoor.
++
+SEP
+12–13
+Visit site →
+PA Endless Mountains Fiber Festival
+Harford, PA
+"Largest and longest-running fiber festival in PA; started 2003 with Penn State Extension."
+FIBERS
+Broad — wool, alpaca, and other natural fibers.
+VENDORS
+Regional.
+SETTING
+Outdoor.
++
+SEP
+19–20
+Visit site →
+Adirondack Wool & Arts Festival
+Greenwich, NY
+"Washington County Fairgrounds; ~3,000 visitors annually."
+FIBERS
+Wool and natural fiber focus.
+VENDORS
+Regional.
+AUDIENCE
+Mixed.
+SETTING
+Outdoor.
++
+SEP
+26–27
+Visit site →
+Shenandoah Valley Fiber Festival
+Berryville, VA
+"Returning in 2026 after skipping 2025; Clarke County Ruritan Fairgrounds."
+FIBERS
+Wool and goat fiber; Pygora goat show featured.
+AUDIENCE
+Mixed.
+SETTING
+Outdoor.
++
+OCT
+3–4
+Visit site →
+Vermont Sheep & Wool Festival
+Tunbridge, VT
+"Annual showcase of natural fibers and fiber arts; Tunbridge Fairgrounds."
+FIBERS
+Natural fibers focus; wool, alpaca, and local farm fiber.
+VENDORS
+Regional and local.
+AUDIENCE
+Mixed.
+SETTING
+Outdoor.
++
+OCT
+TBD
+Visit site →
+A Woolen Affair
+Red Hook / Kingston, NY
+"Boutique and curated; Hudson Valley arts district; tickets on sale May 1."
+AUDIENCE
+Knitters.
++
+OCT
+16
+Visit site →
+Indie Untangled
+Saugerties, NY
+"The Rhinebeck eve tradition; 13th annual in 2026 at HITS on the Hudson."
+FIBERS
+Indie-dyed yarn and handspun; the whole point is the indie dyer concentration.
+VENDORS
+45+ vendors; juried, national indie dyers and makers.
+VIBES
+Food trucks, live music, tented lounge, on-site yarn destash with Yarn Saver.
+AUDIENCE
+Knitters.
+SETTING
+Outdoor (covered pavilions).
+ADMISSION
+$5–$35 tiered entry by time slot.
++
+OCT
+17–18
+Visit site →
+NY State Sheep & Wool (Rhinebeck)
+Rhinebeck, NY
+"45 years in; 300+ vendors, 30,000+ attendees, and a pilgrimages-from-everywhere energy that no other fiber festival matches."
+FIBERS
+Broad — wool, alpaca, mohair, angora, llama, musk ox; indie-dyed yarn well represented.
+VENDORS
+300+ vendors; national and international.
+VIBES
+Winery/distillery/specialty foods building, livestock, sheepdog + frisbee dog demos, fleece sale, breed and camelid barns, fashion show, equipment auction.
+AUDIENCE
+Knitters — but draws a genuinely wide crowd.
+SETTING
+Outdoor.
+ADMISSION
+$12 online / $15 gate / free under 12.
+WORKSHOPS
+Yes — Thu/Fri pre-festival; sell out fast.
++
+OCT
+24
+Visit site →
+Frederick Fiber Fest Fall
+Frederick, MD
+"One-day fall edition; easy day trip from DC or Baltimore."
+VENDORS
+Regional.
+SETTING
+Outdoor.
+ADMISSION
+Free.
++
+NOV
+7–8
+Visit site →
+Fiber Festival of New England
+West Springfield, MA
+"Large indoor marketplace at the Eastern States Exposition; the pre-winter stash run."
+FIBERS
+Broad — yarn, fleece, fiber tools, finished goods.
+VENDORS
+National and regional.
+AUDIENCE
+Knitters.
+SETTING
+Indoor.
++
+Skein '26 ✿
+Dates and details from festival websites and community calendars as of Apr 2026. Always confirm before booking travel.
